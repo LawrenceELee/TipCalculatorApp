@@ -5,6 +5,7 @@ Learned:
 * TextView
 * EditText
 * Seekbar
-* Anonymous Inner Class (Listeners)
 * Event handlers (Listeners)
 * Number pad
+* Internationalization (Spanish translations)
+* Doesn't use Anonymous Inner Class for listeners. Using named Listeners since the code is relatively short and is better to understand onCreate().

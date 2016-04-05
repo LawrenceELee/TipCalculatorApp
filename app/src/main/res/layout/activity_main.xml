@@ -31,7 +31,8 @@ in the xml, so on the GUI widget1 will be "to the left of" widget2-->
         android:ems="10"
 
         android:layout_column="0"
-        android:layout_columnSpan="2" />
+        android:layout_columnSpan="2"
+        />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -46,7 +47,8 @@ in the xml, so on the GUI widget1 will be "to the left of" widget2-->
         android:layout_gravity="fill_horizontal"
         android:background="@color/editable_background"
         android:padding="@dimen/textview_padding"
-        android:elevation="@dimen/elevation" />
+        android:elevation="@dimen/elevation"
+        android:gravity="center_horizontal"/>
 
     <!-- Percent Label and EditText -->
     <TextView
@@ -55,7 +57,7 @@ in the xml, so on the GUI widget1 will be "to the left of" widget2-->
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:id="@+id/percentLabelTextView"
         android:text="@string/tip_label"
-        android:layout_gravity="right"
+        android:layout_gravity="left"
         android:layout_row="1"
         android:layout_column="0" />
 
@@ -69,7 +71,8 @@ in the xml, so on the GUI widget1 will be "to the left of" widget2-->
         android:inputType="number"
         android:maxLength="3"
         android:digits="0123456789"
-        android:gravity="center"
+        android:gravity="right"
+        android:layout_gravity="fill_horizontal"
         android:padding="@dimen/textview_padding"
         android:elevation="@dimen/elevation"
         android:layout_row="1"
@@ -82,7 +85,7 @@ in the xml, so on the GUI widget1 will be "to the left of" widget2-->
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/tip"
         android:id="@+id/tipLabelTextView"
-        android:layout_gravity="right"
+        android:layout_gravity="left"
         android:layout_row="2"
         android:layout_column="0"/>
 
@@ -93,7 +96,7 @@ in the xml, so on the GUI widget1 will be "to the left of" widget2-->
         android:id="@+id/tipTextView"
         android:layout_gravity="fill_horizontal"
         android:background="@color/result_background"
-        android:gravity="center"
+        android:gravity="right"
         android:padding="@dimen/textview_padding"
         android:elevation="@dimen/elevation"
         android:layout_row="2"
@@ -106,7 +109,7 @@ in the xml, so on the GUI widget1 will be "to the left of" widget2-->
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/total"
         android:id="@+id/totalLabelTextView"
-        android:layout_gravity="right"
+        android:layout_gravity="left"
         android:layout_row="3"
         android:layout_column="0"/>
 
@@ -117,7 +120,7 @@ in the xml, so on the GUI widget1 will be "to the left of" widget2-->
         android:id="@+id/totalTextView"
         android:layout_gravity="fill_horizontal"
         android:background="@color/result_background"
-        android:gravity="center"
+        android:gravity="right"
         android:padding="@dimen/textview_padding"
         android:elevation="@dimen/elevation"
         android:layout_row="3"

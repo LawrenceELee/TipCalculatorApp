@@ -22,6 +22,10 @@ public class MainActivity extends AppCompatActivity {
     // View widgets
     private TextView mAmountTextView;
     private EditText mAmountEditText;
+    // we are using a TextView overlaid on top of a EditText for amount
+    // b/c we are including the "$" sign to be displayed depending on the locale.
+    // to deal with parsing the "$" sign, we just have 2 widgets.
+    // we never display the EditText, the TextView does that.
 
     private EditText mPercentEditText;
 
@@ -62,6 +66,39 @@ public class MainActivity extends AppCompatActivity {
         mTotalTextView.setText(CURRENCY_FORMAT.format(total));
     }
 
+    // declare and initialize listener instance variable object for the
+    // EditText's text-changed events using an anonymous inner class
+    private final TextWatcher amountEditTextWatcher = new TextWatcher() {
+
+        // called when the user modifies the bill amount
+        @Override
+        public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
+
+            try {
+                // get bill amount and display currency formatted value
+                mBillAmount = Double.parseDouble(charSequence.toString()) / 100.0; // divide by 100 to get the cents.
+                mAmountTextView.setText(CURRENCY_FORMAT.format(mBillAmount));
+
+            } catch (NumberFormatException e) {
+                // if s is empty or non-numeric
+                mAmountTextView.setText("");
+                mBillAmount = 0.0;
+            }
+
+            calculate(); // update the tip and total TextViews
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+            // not used
+        }
+
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            // not used
+        }
+    }; // end amountEditTextWatcher object declaration and initialization
+
     // listener object for the
     private final TextWatcher percentEditTextWatcher = new TextWatcher() {
 
@@ -87,36 +124,5 @@ public class MainActivity extends AppCompatActivity {
         }
     }; // end object declaration and initialization
 
-    // listener object for the EditText's text-changed events
-    private final TextWatcher amountEditTextWatcher = new TextWatcher() {
-
-        // called when the user modifies the bill amount
-        @Override
-        public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
-
-            try {
-                // get bill amount and display currency formatted value
-                mBillAmount = Double.parseDouble(charSequence.toString());
-                mAmountTextView.setText(CURRENCY_FORMAT.format(mBillAmount));
-
-            } catch (NumberFormatException e) {
-                // if s is empty or non-numeric
-                mAmountTextView.setText("");
-                mBillAmount = 0.0;
-            }
-
-            calculate(); // update the tip and total TextViews
-        }
-
-        @Override
-        public void afterTextChanged(Editable s) {
-            // not used
-        }
-
-        @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            // not used
-        }
-    }; // end amountEditTextWatcher object declaration and initialization
 }
 

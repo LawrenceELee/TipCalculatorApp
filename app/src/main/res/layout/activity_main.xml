@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- The order of the widgets matter for a GridLayout. For example, widget1 is before widget2
+in the xml, so on the GUI widget1 will be "to the left of" widget2-->
 <GridLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -10,58 +13,78 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity"
     android:columnCount="2"
-    android:useDefaultMargins="true"
-    >
+    android:useDefaultMargins="true" >
 
+    <!--
+    place the EditText and TextView "on top" of each other
+    using columSpan="2".
+    ?android:attr gets the size of text set for the global android settings.
+    -->
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
         android:inputType="number"
         android:id="@+id/amountEditText"
-        android:layout_column="0"
         android:digits="0123456789"
         android:maxLength="6"
         android:ems="10"
-        android:layout_columnSpan="2"/>
 
+        android:layout_column="0"
+        android:layout_columnSpan="2" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:id="@+id/amountTextView"
+
         android:layout_row="0"
         android:layout_column="0"
         android:layout_columnSpan="2"
+
         android:hint="@string/enter_amount"
         android:layout_gravity="fill_horizontal"
-        android:background="@color/amount_background"
+        android:background="@color/editable_background"
         android:padding="@dimen/textview_padding"
-        android:elevation="@dimen/elevation"/>
+        android:elevation="@dimen/elevation" />
 
+    <!-- Percent Label and EditText -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/tip_percentage"
-        android:id="@+id/percentTextView"
-        android:layout_gravity="center_vertical|right"/>
+        android:id="@+id/percentLabelTextView"
+        android:text="@string/tip_label"
+        android:layout_gravity="right"
+        android:layout_row="1"
+        android:layout_column="0" />
 
-    <SeekBar
+    <EditText
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/seekbar_height"
-        android:id="@+id/percentSeekBar"
-        android:indeterminate="false"
-        android:max="30"
-        android:progress="15"
-        android:layout_gravity="fill_horizontal"/>
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/tip_percentage"
+        android:id="@+id/percentEditText"
+        android:background="@color/editable_background"
+        android:inputType="number"
+        android:maxLength="3"
+        android:digits="0123456789"
+        android:gravity="center"
+        android:padding="@dimen/textview_padding"
+        android:elevation="@dimen/elevation"
+        android:layout_row="1"
+        android:layout_column="1"/>
 
+    <!-- Tip Label and Amount -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/tip"
         android:id="@+id/tipLabelTextView"
-        android:layout_gravity="right"/>
+        android:layout_gravity="right"
+        android:layout_row="2"
+        android:layout_column="0"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -72,15 +95,20 @@
         android:background="@color/result_background"
         android:gravity="center"
         android:padding="@dimen/textview_padding"
-        android:elevation="@dimen/elevation"/>
+        android:elevation="@dimen/elevation"
+        android:layout_row="2"
+        android:layout_column="1"/>
 
+    <!-- Total Label and Amount -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/total"
         android:id="@+id/totalLabelTextView"
-        android:layout_gravity="right"/>
+        android:layout_gravity="right"
+        android:layout_row="3"
+        android:layout_column="0"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -91,6 +119,8 @@
         android:background="@color/result_background"
         android:gravity="center"
         android:padding="@dimen/textview_padding"
-        android:elevation="@dimen/elevation"/>
+        android:elevation="@dimen/elevation"
+        android:layout_row="3"
+        android:layout_column="1"/>
 
 </GridLayout>

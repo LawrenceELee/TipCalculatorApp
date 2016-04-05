@@ -14,7 +14,6 @@ import java.text.NumberFormat;
 public class MainActivity extends AppCompatActivity {
 
     private static final NumberFormat CURRENCY_FORMAT = NumberFormat.getCurrencyInstance();
-    private static final NumberFormat PERCENT_FORMAT = NumberFormat.getPercentInstance();
     private static final int BASE_PERCENTAGE = 15;
 
     private double mBillAmount = 0.0;
